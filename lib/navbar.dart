@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'pages/home_screen.dart';
+import 'pages/notifikasi_screen.dart';
+import 'pages/profile_screen.dart';
+import 'pages/search_screen.dart';
+import 'pages/setting_screen.dart';
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Contoh Navbar Flutter',
-      home: MainPage(),
+      home: const MainPage(),
     );
   }
 }
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
-  _MainPageState createState() => _MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
-  // Daftar widget untuk masing-masing tab (total 5 halaman)
-  final List<Widget> _children = [
+  // Daftar widget
+  final List<Widget> _children = const [
     HomeScreen(),
     SearchScreen(),
     NotifikasiScreen(),
@@ -44,7 +54,7 @@ class _MainPageState extends State<MainPage> {
             _currentIndex = index;
           });
         },
-        type: BottomNavigationBarType.fixed, // supaya 5 item tidak shrink
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -69,41 +79,5 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
     );
-  }
-}
-
-// Widget untuk setiap halaman
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Ini Beranda'));
-  }
-}
-
-class SearchScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Ini Pencarian'));
-  }
-}
-
-class NotifikasiScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Ini Notifikasi'));
-  }
-}
-
-class SettingScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Ini Pengaturan'));
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Ini Profil'));
   }
 }
